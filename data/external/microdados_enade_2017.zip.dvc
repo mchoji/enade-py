@@ -1,0 +1,7 @@
+md5: b73da663e219dcea083695e4f8c5e8a3
+outs:
+- md5: 3cfd24ffd681fc94808e7f7a62c817f0
+  path: microdados_enade_2017.zip
+  cache: true
+  metric: false
+  persist: false
