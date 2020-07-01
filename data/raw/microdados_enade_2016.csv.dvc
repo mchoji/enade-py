@@ -1,0 +1,7 @@
+md5: 38b4f81a46cd162459e6320ef3edaa37
+outs:
+- md5: 06e92efd69b05169eb963d4d391d325d
+  path: microdados_enade_2016.csv
+  cache: true
+  metric: false
+  persist: false
