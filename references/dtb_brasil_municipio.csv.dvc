@@ -1,0 +1,7 @@
+md5: bfefdf8d80d46df37bf080c6a425bb40
+outs:
+- md5: b9128f7e2329d515c11a519071e7fc3b
+  path: dtb_brasil_municipio.csv
+  cache: true
+  metric: false
+  persist: false
