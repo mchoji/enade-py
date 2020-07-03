@@ -1,7 +1,9 @@
 """A set of functions that transform a dataset in any way."""
 
 import pandas as pd
+from pandas.api.types import CategoricalDtype
 
+from .index import get_index_dict
 from .loaders import _dtypes
 
 
@@ -34,3 +36,28 @@ def align_microdata_2016(filepath_or_buffer, output):
         inplace=True
     )
     df.to_csv(output, sep=';', index=False, decimal=',')
+
+
+def categorize(dataframe, columns, only_current=False):
+    if not isinstance(dataframe, pd.DataFrame):
+        raise TypeError(
+            'Argument "dataframe" should be of type pandas.DataFrame'
+        )
+    if not isinstance(columns, list):
+        raise TypeError(
+            'Argument "columns" should be of type list'
+        )
+    result = dataframe.copy()
+    for col in columns:
+        try:
+            idx_col = get_index_dict(col)
+        except NameError:
+            result.loc[:, col] = result[col].astype('category')
+        else:
+            cats = list(idx_col.keys())
+            cat_type = CategoricalDtype(cats)
+            result.loc[:, col] = result[col].astype(cat_type)
+            if only_current:
+                result.loc[:, col].cat.remove_unused_categories()
+
+    return result
