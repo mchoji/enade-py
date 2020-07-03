@@ -5,6 +5,8 @@ information (variable) in Enade microdata. Indexes are represented by
 dictionaries and should not be accessed directly.
 """
 
+from .helpers import list_cols_inst_eval
+
 _index_co_categad = {
     1: 'Pública Federal',
     2: 'Pública Estadual',
@@ -578,8 +580,17 @@ _index_qe_i26 = {
     'I': 'Outro motivo',
 }
 
-# Variables from QE_I27 TO QE_I68 take a scale format so they don't need
-# a translation to something more descriptive
+# Variables from QE_I27 TO QE_I68 take a scale format
+_index_qe_i27_to_qe_i68 = {
+    1: 'Discordo totalmente',
+    2: 'Discordo consideravalmente',
+    3: 'Discordo parcialmente',
+    4: 'Concordo parcialmente',
+    5: 'Concordo consideravelmente',
+    6: 'Concordo totalmente',
+    7: 'Não sei responder',
+    8: 'Não se aplica',
+}
 
 # TODO: indexes from QE_I169 to QE_I81 (exclusive for licentiate)
 
@@ -587,6 +598,10 @@ _index_qe_i26 = {
 def get_index_dict(varname: str):
     if not isinstance(varname, str):
         raise TypeError('Expected string as argument')
+
+    if varname.upper() in list_cols_inst_eval():
+        return _index_qe_i27_to_qe_i68
+
     dict_name = '_index_' + varname.lower()
     if dict_name in globals():
         return globals()[dict_name]
