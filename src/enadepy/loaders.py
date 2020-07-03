@@ -182,3 +182,14 @@ def read_raw(datapath: str, **kwargs) -> pd.DataFrame:
     df['DS_VT_ACE_OCE'] = df['DS_VT_ACE_OCE'].str.zfill(27)
 
     return df
+
+
+def read_interm(datapath: str, **kwargs):
+    """Loads intermediate data with expected dtypes."""
+    df = pd.read_csv(datapath, dtype=_dtypes, **kwargs)
+    return df
+
+
+def read_dtb_municipio(datapath):
+    df = pd.read_csv(datapath, dtype='string')
+    return df
