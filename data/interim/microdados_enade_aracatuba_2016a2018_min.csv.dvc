@@ -1,0 +1,7 @@
+md5: 10d11308d788f0e8ef499ff33bf63ac8
+outs:
+- md5: 2ccb0fb1252e4d449f9f3d7301bccbc5
+  path: microdados_enade_aracatuba_2016a2018_min.csv
+  cache: true
+  metric: false
+  persist: false
