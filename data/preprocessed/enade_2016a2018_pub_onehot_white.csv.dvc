@@ -1,0 +1,7 @@
+md5: feb895ffa4175eccf12cc893509191a1
+outs:
+- md5: dac1e2c9b74265e375f6a1bd8078ef14
+  path: enade_2016a2018_pub_onehot_white.csv
+  cache: true
+  metric: false
+  persist: false

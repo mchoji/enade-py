@@ -1,0 +1,7 @@
+md5: 5eb50f6b7519b80cc938776f9990311f
+outs:
+- md5: c434e55e1cfcf88e54c7ffae0303a3a8
+  path: enade_2016a2018_priv_onehot_white.csv
+  cache: true
+  metric: false
+  persist: false
