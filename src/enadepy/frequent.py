@@ -34,19 +34,19 @@ def freq_itemsets(
 ) -> PandasDataFrame:
     """Generates frequent itemsets from dataframe in transactions mode.
 
+    Note:
+        A dataframe in transaction mode is one in which all the columns
+        contain binary values, like True or False.
+
     Args:
         dataframe (PandasDataFrame): A pandas DataFrame in transaction
-        mode.
+            mode.
         **kwargs (Any): Any arguments to be passed to function
-        `mlxtend.frequent_patterns.fpgrowth`.
+            `mlxtend.frequent_patterns.fpgrowth`.
 
     Returns:
         PandasDataFrame: A pandas DataFrame containing the frequent
         itemsets with the support and length for each itemset.
-
-    Note:
-        A dataframe in transaction mode is one in which all the columns
-        contain binary values, like True or False.
     """
     res = fpgrowth(dataframe, **kwargs)
     res['length'] = res['itemsets'].apply(lambda x: len(x))
@@ -57,16 +57,16 @@ def freq_itemsets(
 def _is_closed(itemset: Set, same_sup_itemsets: List[Set]) -> bool:
     """Verifies if a given itemset is a closed frequent itemset.
 
+    Note:
+        This function is not supposed to be used externally.
+
     Args:
         itemset (Set): The itemset to test for closed frequent itemset.
         same_sup_itemsets (List[Set]): A list of itemset with same
-        support.
+            support.
 
     Returns:
         bool: True if `itemset` is a closed frequent itemset.
-
-    Note:
-        This function is not supposed to be used externally.
     """
     check = [itemset.issubset(x) for x in same_sup_itemsets if x != itemset]
     return not bool(check.count(True))
@@ -84,9 +84,9 @@ def closed_freq_itemsets(
 
     Args:
         dataframe (PandasDataFrame): A pandas DataFrame in transaction
-        mode.
+            mode.
         **kwargs (Any): Any arguments to be passed to function
-        `mlxtend.frequent_patterns.fpgrowth`.
+            `mlxtend.frequent_patterns.fpgrowth`.
 
     Returns:
         PandasDataFrame: A pandas DataFrame containing the frequent
@@ -126,11 +126,13 @@ def freq_itemsets_sort(
 
     Args:
         dataframe (PandasDataFrame): A pandas DataFrame in transaction
-        mode.
+            mode.
         sort_by (str, optional): The column to use for sorting
-        ('support' or 'length'). Defaults to 'support'.
+            ('support' or 'length'). Defaults to 'support'.
         ascending (bool, optional): Sort output in ascending mode.
-        Defaults to False.
+            Defaults to False.
+        **kwargs (Any): Any arguments to be passed to function
+            `mlxtend.frequent_patterns.fpgrowth`.
 
     Returns:
         PandasDataFrame: A pandas DataFrame containing the frequent
@@ -160,11 +162,13 @@ def closed_freq_itemsets_sort(
 
     Args:
         dataframe (PandasDataFrame): A pandas DataFrame in transaction
-        mode.
+            mode.
         sort_by (str, optional): The column to use for sorting
-        ('support' or 'length'). Defaults to 'support'.
+            ('support' or 'length'). Defaults to 'support'.
         ascending (bool, optional): Sort output in ascending mode.
-        Defaults to False.
+            Defaults to False.
+        **kwargs (Any): Any arguments to be passed to function
+            `mlxtend.frequent_patterns.fpgrowth`.
 
     Returns:
         PandasDataFrame: A pandas DataFrame containing the frequent
@@ -193,13 +197,13 @@ def find_itemsets_all(
 
     Args:
         freq_itemsets (PandasDataFrame): The frequent itemsets where
-        the search will be performed.
+            the search will be performed.
         search (Set, optional): Set with items to search for.
-        Defaults to set().
+            Defaults to set().
         exact (bool, optional): Match only if itemset is equal to
-        `search`. Defaults to False.
+            `search`. Defaults to False.
         col_name (str, optional): Column name where the itemsets reside.
-        Defaults to 'itemsets'.
+            Defaults to 'itemsets'.
 
     Returns:
         PandasDataFrame: a pandas DataFrame containing the itemsets the
@@ -226,11 +230,11 @@ def find_itemsets_any(
 
     Args:
         freq_itemsets (PandasDataFrame): The frequent itemsets where
-        the search will be performed.
+            the search will be performed.
         search (Set, optional): Set with items to search for.
-        Defaults to set().
+            Defaults to set().
         col_name (str, optional): Column name where the itemsets reside.
-        Defaults to 'itemsets'.
+            Defaults to 'itemsets'.
 
     Returns:
         PandasDataFrame: a pandas DataFrame containing the itemsets the
@@ -258,11 +262,11 @@ def find_itemsets_without(
 
     Args:
         freq_itemsets (PandasDataFrame): The frequent itemsets where
-        the search will be performed.
+            the search will be performed.
         search (Set, optional): Set with items to exclude.
-        Defaults to set().
+            Defaults to set().
         col_name (str, optional): Column name where the itemsets reside.
-        Defaults to 'itemsets'.
+            Defaults to 'itemsets'.
 
     Returns:
         PandasDataFrame: a pandas DataFrame containing the itemsets the
@@ -290,7 +294,7 @@ def association_rules_ext(
 
     Args:
         freq_itemsets (PandasDataFrame): A pandas DataFrame containing
-        frequent itemsets.
+            frequent itemsets.
 
     Returns:
         PandasDataFrame: A pandas DataFrame of association rules
@@ -299,6 +303,7 @@ def association_rules_ext(
 
     See Also:
         freq_itemsets: generates frequent itemsets
+
         mlxtend.frequent_patterns.association_rules
     """
     rules = association_rules(freq_itemsets, **kwargs)
@@ -332,10 +337,10 @@ def filter_rules(
 
     Args:
         rules (PandasDataFrame): a pandas DataFrame containing
-        association rules.
+            association rules.
         by (List[str], optional): A list containing the precedence of
-        columns to be used during rules sorting.
-        Defaults to ['conviction', 'support', 'lift'].
+            columns to be used during rules sorting.
+            Defaults to ['conviction', 'support', 'lift'].
 
     Returns:
         PandasDataFrame: a pandas DataFrame containing filtered rules.

@@ -95,12 +95,12 @@ def categorize(
 
     Args:
         dataframe (PandasDataFrame): A pandas DataFrame containing Enade
-        microdata.
+            microdata.
         columns (List[str]): A list of columns to be converted to
-        categorical type.
+            categorical type.
         only_current (bool, optional): If true, uses only currently
-        present values as categories, not the predefined ones.
-        Defaults to False.
+            present values as categories, not the predefined ones.
+            Defaults to False.
 
     Returns:
         PandasDataFrame: A new DataFrame with the converted columns.

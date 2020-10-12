@@ -186,9 +186,9 @@ def read_raw(filepath: str, **kwargs: Any) -> PandasDataFrame:
 
     Args:
         filepath (str): A path for the raw data containing the microdata
-        as provided by the official source.
+            as provided by the official source.
         **kwargs (Any): Any arguments that should be passed to
-        `pandas.read_csv`.
+            `pandas.read_csv`.
 
     Returns:
         PandasDataFrame: A pandas DataFrame.
@@ -196,8 +196,10 @@ def read_raw(filepath: str, **kwargs: Any) -> PandasDataFrame:
     See Also:
         read_interm: reads Enade microdata that have already been loaded
         with `read_raw` once.
+
         write_interm: write a DataFrame containing Enade microdata to
         disk.
+
         pandas.read_csv
     """
     df = pandas.read_csv(
@@ -230,17 +232,20 @@ def read_interm(filepath: str, **kwargs: Any) -> PandasDataFrame:
 
     Args:
         filepath (str): A path for data that was previously loaded using
-        function `read_raw` and written to disk using `write_interm`.
+            function `read_raw` and written to disk using
+            `write_interm`.
         **kwargs (Any): Any arguments that should be passed to
-        `pandas.read_csv`.
+            `pandas.read_csv`.
 
     Returns:
         PandasDataFrame: A pandas DataFrame with the loaded data.
 
     See Also:
         read_raw: reads raw Enade microdata.
+
         write_interm: writes a DataFrame containing Enade microdata to
         disk.
+
         pandas.read_csv
     """
     df = pandas.read_csv(filepath, dtype=_dtypes, **kwargs)
@@ -257,11 +262,13 @@ def write_interm(pd: PandasDataFrame, filepath: str, **kwargs: Any) -> None:
         pd (PandasDataFrame): A pandas DataFrame to write to disk.
         filepath (str): The file name where the data will be written to.
         **kwargs (Any): Any arguments that should be passed to
-        `pandas.DataFrame.to_csv`.
+            `pandas.DataFrame.to_csv`.
 
     See Also:
         read_raw: reads raw Enade microdata.
+
         read_interm: reads formatted Enade microdata.
+
         pandas.DataFrame.to_csv
     """
     pd.to_csv(filepath, index=False, **kwargs)
@@ -278,8 +285,8 @@ def read_dtb_municipio(filepath: str) -> PandasDataFrame:
 
     Note:
         The DTB dataset contains information about Brazilian Territorial
-    Division and can be downloaded at
-    https://www.ibge.gov.br/explica/codigos-dos-municipios.php.
+        Division and can be downloaded at
+        https://www.ibge.gov.br/explica/codigos-dos-municipios.php.
     """
     df = pandas.read_csv(filepath, dtype='string')
     return df

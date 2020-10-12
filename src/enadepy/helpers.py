@@ -30,7 +30,7 @@ def list_cols_exam(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names related to the exam, excluding the
@@ -48,7 +48,7 @@ def list_cols_institution(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names related to the institution,
@@ -76,7 +76,7 @@ def list_cols_student(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names related to the student,
@@ -102,7 +102,7 @@ def list_cols_obj_info(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names related to the objective part of
@@ -132,7 +132,7 @@ def list_cols_vectors(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names related to vectors,
@@ -159,7 +159,7 @@ def list_cols_presence(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names related to types of presence,
@@ -187,7 +187,7 @@ def list_cols_disc_status(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names, excluding the ones passed as
@@ -211,7 +211,7 @@ def list_cols_grades(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names related to the grades,
@@ -249,7 +249,7 @@ def list_cols_exam_eval(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names, excluding the ones passed as
@@ -267,7 +267,7 @@ def list_cols_socioecon(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names related to socioeconomics aspects,
@@ -285,7 +285,7 @@ def list_cols_inst_eval(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names related to institution evaluation,
@@ -303,7 +303,7 @@ def list_cols_licentiate(exclude: List[str] = None) -> List[str]:
 
     Args:
         exclude (List[str], optional): list of variables to exclude from
-        the output. Defaults to None.
+            the output. Defaults to None.
 
     Returns:
         List[str]: The variable names related to licentiate courses,
