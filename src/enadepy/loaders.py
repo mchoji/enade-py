@@ -1,6 +1,31 @@
-"""Provides functions for loading Enade data in general."""
+# The MIT License (MIT)
 
-import pandas as pd
+# Copyright (c) 2020 M. Choji
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+# CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+# TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+"""Provides functions for loading and saving Enade data in general."""
+
+import pandas
+from typing import Any, TypeVar
+
+PandasDataFrame = TypeVar('PandasDataFrame', bound=pandas.core.frame.DataFrame)
 
 _dtypes = {
     'NU_ANO': 'int64',
@@ -156,10 +181,27 @@ _dtypes = {
 }
 
 
-def read_raw(datapath: str, **kwargs) -> pd.DataFrame:
-    """Loads raw data with expected dtypes and more."""
-    df = pd.read_csv(
-        datapath,
+def read_raw(filepath: str, **kwargs: Any) -> PandasDataFrame:
+    """Loads raw data with expected dtypes and more.
+
+    Args:
+        filepath (str): A path for the raw data containing the microdata
+        as provided by the official source.
+        **kwargs (Any): Any arguments that should be passed to
+        `pandas.read_csv`.
+
+    Returns:
+        PandasDataFrame: A pandas DataFrame.
+
+    See Also:
+        read_interm: reads Enade microdata that have already been loaded
+        with `read_raw` once.
+        write_interm: write a DataFrame containing Enade microdata to
+        disk.
+        pandas.read_csv
+    """
+    df = pandas.read_csv(
+        filepath,
         sep=';',
         header=0,
         decimal=',',
@@ -170,11 +212,7 @@ def read_raw(datapath: str, **kwargs) -> pd.DataFrame:
         },
         **kwargs
     )
-    # for col in df.columns:
-    #     print(f'Setting dtype for {col}')
-    #     df[col] = df[col].astype(_dtypes[col])
 
-    # Convert a numeric sequence into a string
     for column in ['DS_VT_ACE_OFG', 'DS_VT_ACE_OCE']:
         df[column] = df[column].astype('string')
 
@@ -184,12 +222,64 @@ def read_raw(datapath: str, **kwargs) -> pd.DataFrame:
     return df
 
 
-def read_interm(datapath: str, **kwargs):
-    """Loads intermediate data with expected dtypes."""
-    df = pd.read_csv(datapath, dtype=_dtypes, **kwargs)
+def read_interm(filepath: str, **kwargs: Any) -> PandasDataFrame:
+    """Loads intermediate data with expected dtypes.
+
+    Loads data from disk representing Enade microdata that was
+    initially loaded using function `read_raw`.
+
+    Args:
+        filepath (str): A path for data that was previously loaded using
+        function `read_raw` and written to disk using `write_interm`.
+        **kwargs (Any): Any arguments that should be passed to
+        `pandas.read_csv`.
+
+    Returns:
+        PandasDataFrame: A pandas DataFrame with the loaded data.
+
+    See Also:
+        read_raw: reads raw Enade microdata.
+        write_interm: writes a DataFrame containing Enade microdata to
+        disk.
+        pandas.read_csv
+    """
+    df = pandas.read_csv(filepath, dtype=_dtypes, **kwargs)
     return df
 
 
-def read_dtb_municipio(datapath):
-    df = pd.read_csv(datapath, dtype='string')
+def write_interm(pd: PandasDataFrame, filepath: str, **kwargs: Any) -> None:
+    """Writes a DataFrame to disk.
+
+    Write a DataFrame previously loaded with functions `read_raw` or
+    `read_interm` to disk.
+
+    Args:
+        pd (PandasDataFrame): A pandas DataFrame to write to disk.
+        filepath (str): The file name where the data will be written to.
+        **kwargs (Any): Any arguments that should be passed to
+        `pandas.DataFrame.to_csv`.
+
+    See Also:
+        read_raw: reads raw Enade microdata.
+        read_interm: reads formatted Enade microdata.
+        pandas.DataFrame.to_csv
+    """
+    pd.to_csv(filepath, index=False, **kwargs)
+
+
+def read_dtb_municipio(filepath: str) -> PandasDataFrame:
+    """Reads DTB dataset from a file.
+
+    Args:
+        filepath (str): Path for DTB dataset in disk.
+
+    Returns:
+        PandasDataFrame: A pandas DataFrame with the loaded data.
+
+    Note:
+        The DTB dataset contains information about Brazilian Territorial
+    Division and can be downloaded at
+    https://www.ibge.gov.br/explica/codigos-dos-municipios.php.
+    """
+    df = pandas.read_csv(filepath, dtype='string')
     return df

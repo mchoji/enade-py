@@ -1,3 +1,25 @@
+# The MIT License (MIT)
+
+# Copyright (c) 2020 M. Choji
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+# CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+# TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """A set of indexes that map identifiers to descriptions.
 
 Each index in this module relates to a question or student/institution
@@ -5,39 +27,68 @@ information (variable) in Enade microdata. Indexes are represented by
 dictionaries and should not be accessed directly.
 """
 
+from typing import Dict
+
 from .helpers import list_cols_inst_eval
 
 _index_co_categad = {
-    1: 'Pública Federal',
-    2: 'Pública Estadual',
-    3: 'Pública Municipal',
-    4: 'Privada com fins lucrativos',
-    5: 'Privada sem fins lucrativos',
-    7: 'Especial',
-    93: 'Pessoa Jurídica de Direito Público - Federal',
-    115: 'Pessoa Jurídica de Direito Público - Estadual',
-    116: 'Pessoa Jurídica de Direito Público - Municipal',
-    118: ('Pessoa Jurídica de Direito Privado - '
-          'Com fins lucrativos - Sociedade Civil'),
-    120: ('Pessoa Jurídica de Direito Privado - '
-          'Sem fins lucrativos - Associação de Utilidade Pública'),
-
-    121: ('Pessoa Jurídica de Direito Privado - '
-          'Sem fins lucrativos - Fundação'),
-    10001: 'Pessoa Jurídica de Direito Público - Estadual',
-    10002: 'Pessoa Jurídica de Direito Público - Federal',
-    10003: 'Pessoa Jurídica de Direito Público - Municipal',
-    10004: ('Pessoa Jurídica de Direito Privado - '
-            'Com fins lucrativos - Associação de Utilidade Pública'),
-    10005: 'Privada com fins lucrativos',
-    10006: ('Pessoa Jurídica de Direito Privado - '
-            'Com fins lucrativos - Sociedade Mercantil ou Comercial'),
-    10007: ('Pessoa Jurídica de Direito Privado - '
-            'Sem fins lucrativos - Associação de Utilidade Pública'),
-    10008: 'Privada sem fins lucrativos',
-    10009: ('Pessoa Jurídica de Direito Privado - '
-            'Sem fins lucrativos - Sociedade'),
-    17634: 'Fundação Pública de Direito Privado Municípal',
+    1:
+    'Pública Federal',
+    2:
+    'Pública Estadual',
+    3:
+    'Pública Municipal',
+    4:
+    'Privada com fins lucrativos',
+    5:
+    'Privada sem fins lucrativos',
+    7:
+    'Especial',
+    93:
+    'Pessoa Jurídica de Direito Público - Federal',
+    115:
+    'Pessoa Jurídica de Direito Público - Estadual',
+    116:
+    'Pessoa Jurídica de Direito Público - Municipal',
+    118: (
+        'Pessoa Jurídica de Direito Privado - '
+        'Com fins lucrativos - Sociedade Civil'
+    ),
+    120: (
+        'Pessoa Jurídica de Direito Privado - '
+        'Sem fins lucrativos - Associação de Utilidade Pública'
+    ),
+    121:
+    ('Pessoa Jurídica de Direito Privado - '
+     'Sem fins lucrativos - Fundação'),
+    10001:
+    'Pessoa Jurídica de Direito Público - Estadual',
+    10002:
+    'Pessoa Jurídica de Direito Público - Federal',
+    10003:
+    'Pessoa Jurídica de Direito Público - Municipal',
+    10004: (
+        'Pessoa Jurídica de Direito Privado - '
+        'Com fins lucrativos - Associação de Utilidade Pública'
+    ),
+    10005:
+    'Privada com fins lucrativos',
+    10006: (
+        'Pessoa Jurídica de Direito Privado - '
+        'Com fins lucrativos - Sociedade Mercantil ou Comercial'
+    ),
+    10007: (
+        'Pessoa Jurídica de Direito Privado - '
+        'Sem fins lucrativos - Associação de Utilidade Pública'
+    ),
+    10008:
+    'Privada sem fins lucrativos',
+    10009: (
+        'Pessoa Jurídica de Direito Privado - '
+        'Sem fins lucrativos - Sociedade'
+    ),
+    17634:
+    'Fundação Pública de Direito Privado Municípal',
 }
 
 _index_co_orgacad = {
@@ -352,13 +403,20 @@ _index_qe_i04 = _index_qe_i05 = {
 }
 
 _index_qe_i06 = {
-    'A': 'Em casa ou apartamento, sozinho',
-    'B': 'Em casa ou apartamento, com pais e/ou parentes',
-    'C': 'Em casa ou apartamento, com cônjuge e/ou filhos',
-    'D': 'Em casa ou apartamento, com outras pessoas (incluindo república)',
-    'E': 'Em alojamento universitário da própria instituição',
-    'F': ('Em outros tipos de habitação individual ou coletiva '
-          '(hotel, hospedaria, pensão ou outro)'),
+    'A':
+    'Em casa ou apartamento, sozinho',
+    'B':
+    'Em casa ou apartamento, com pais e/ou parentes',
+    'C':
+    'Em casa ou apartamento, com cônjuge e/ou filhos',
+    'D':
+    'Em casa ou apartamento, com outras pessoas (incluindo república)',
+    'E':
+    'Em alojamento universitário da própria instituição',
+    'F': (
+        'Em outros tipos de habitação individual ou coletiva '
+        '(hotel, hospedaria, pensão ou outro)'
+    ),
 }
 
 _index_qe_i07 = {
@@ -383,15 +441,24 @@ _index_qe_i08 = {
 }
 
 _index_qe_i09 = {
-    'A': ('Não tenho renda e meus gastos são financiados '
-          'por programas governamentais'),
-    'B': ('Não tenho renda e meus gastos são financiados '
-          'pela minha família ou por outras pessoas'),
-    'C': ('Tenho renda, mas recebo ajuda da família ou de'
-          ' outras pessoas para financiar meus gastos'),
-    'D': 'Tenho renda e não preciso de ajuda para financiar meus gastos',
-    'E': 'Tenho renda e contribuo com o sustento da família',
-    'F': 'Sou o principal responsável pelo sustento da família',
+    'A': (
+        'Não tenho renda e meus gastos são financiados '
+        'por programas governamentais'
+    ),
+    'B': (
+        'Não tenho renda e meus gastos são financiados '
+        'pela minha família ou por outras pessoas'
+    ),
+    'C': (
+        'Tenho renda, mas recebo ajuda da família ou de'
+        ' outras pessoas para financiar meus gastos'
+    ),
+    'D':
+    'Tenho renda e não preciso de ajuda para financiar meus gastos',
+    'E':
+    'Tenho renda e contribuo com o sustento da família',
+    'F':
+    'Sou o principal responsável pelo sustento da família',
 }
 
 _index_qe_i10 = {
@@ -435,23 +502,37 @@ _index_qe_i13 = {
 }
 
 _index_qe_i14 = {
-    'A': 'Não participei',
-    'B': 'Sim, Programa Ciência sem Fronteiras',
-    'C': ('Sim, programa de intercâmbio financiado pelo '
-          'Governo Federal (Marca; Brafitec; PLI; outro'),
-    'D': 'Sim, programa de intercâmbio financiado pelo Governo Estadual',
-    'E': 'Sim, programa de intercâmbio da minha instituição',
-    'F': 'Sim, outro intercâmbio não institucional',
+    'A':
+    'Não participei',
+    'B':
+    'Sim, Programa Ciência sem Fronteiras',
+    'C': (
+        'Sim, programa de intercâmbio financiado pelo '
+        'Governo Federal (Marca; Brafitec; PLI; outro'
+    ),
+    'D':
+    'Sim, programa de intercâmbio financiado pelo Governo Estadual',
+    'E':
+    'Sim, programa de intercâmbio da minha instituição',
+    'F':
+    'Sim, outro intercâmbio não institucional',
 }
 
 _index_qe_i15 = {
-    'A': 'Não',
-    'B': 'Sim, por critério étnico-racial',
-    'C': 'Sim, por critério de renda',
-    'D': ('Sim, por ter estudado em escola pública ou particular '
-          'com bolsa de estudos'),
-    'E': 'Sim, por sistema que combina dois ou mais critérios anteriores',
-    'F': 'Sim, por sistema diferente dos anteriores',
+    'A':
+    'Não',
+    'B':
+    'Sim, por critério étnico-racial',
+    'C':
+    'Sim, por critério de renda',
+    'D': (
+        'Sim, por ter estudado em escola pública ou particular '
+        'com bolsa de estudos'
+    ),
+    'E':
+    'Sim, por sistema que combina dois ou mais critérios anteriores',
+    'F':
+    'Sim, por sistema diferente dos anteriores',
 }
 
 _index_qe_i16 = {
@@ -495,12 +576,18 @@ _index_qe_i17 = {
 }
 
 _index_qe_i18 = {
-    'A': 'Ensino médio tradicional',
-    'B': ('Profissionalizante técnico '
-          '(eletrônica, contabilidade, agrícola, outro)'),
-    'C': 'Profissionalizante magistério (Curso Normal)',
-    'D': 'Educação de Jovens e Adultos (EJA) e/ou Supletivo',
-    'E': 'Outra modalidade',
+    'A':
+    'Ensino médio tradicional',
+    'B': (
+        'Profissionalizante técnico '
+        '(eletrônica, contabilidade, agrícola, outro)'
+    ),
+    'C':
+    'Profissionalizante magistério (Curso Normal)',
+    'D':
+    'Educação de Jovens e Adultos (EJA) e/ou Supletivo',
+    'E':
+    'Outra modalidade',
 }
 
 _index_qe_i19 = {
@@ -549,12 +636,18 @@ _index_qe_i23 = {
 }
 
 _index_qe_i24 = {
-    'A': 'Sim, somente na modalidade presencial',
-    'B': 'Sim, somente na modalidade semipresencial',
-    'C': ('Sim, parte na modalidade presencial '
-          'e parte na modalidade semipresencial'),
-    'D': 'Sim, na modalidade a distância',
-    'E': 'Não',
+    'A':
+    'Sim, somente na modalidade presencial',
+    'B':
+    'Sim, somente na modalidade semipresencial',
+    'C': (
+        'Sim, parte na modalidade presencial '
+        'e parte na modalidade semipresencial'
+    ),
+    'D':
+    'Sim, na modalidade a distância',
+    'E':
+    'Não',
 }
 
 _index_qe_i25 = {
@@ -595,7 +688,23 @@ _index_qe_i27_to_qe_i68 = {
 # TODO: indexes from QE_I169 to QE_I81 (exclusive for licentiate)
 
 
-def get_index_dict(varname: str):
+def get_index_dict(varname: str) -> Dict:
+    """Gets a map to translate indexes from a given variable.
+
+    Given a variable name (column name from Enade microdata), returns
+    a dictionary containing the values seen in microdata as dictionary's
+    keys and the respective descriptions as dictionary's values.
+
+    Args:
+        varname (str): A variable or column name from Enade microdata.
+
+    Raises:
+        NameError: if a dictionary was not found for the given name.
+
+    Returns:
+        Dict: A dictionary mapping values to descriptions for a given
+        variable or column name.
+    """
     if not isinstance(varname, str):
         raise TypeError('Expected string as argument')
 
