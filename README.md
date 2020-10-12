@@ -1,6 +1,6 @@
 # enade-py
 
-A library for data mining over Enade microdata
+ A library for facilitating data analysis over Enade microdata.
 
 
 ## Description
