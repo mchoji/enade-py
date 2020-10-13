@@ -1,3 +1,16 @@
+[![Build Status](https://travis-ci.com/mchoji/enade-py.svg?branch=main)](https://travis-ci.com/mchoji/enade-py)
+[![Documentation Status](https://readthedocs.org/projects/enade-py/badge/?version=latest)](https://enade-py.readthedocs.io/en/latest/?badge=latest)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/mchoji/enade-py.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/mchoji/enade-py/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/mchoji/enade-py.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/mchoji/enade-py/context:python)
+[![Maintainability](https://api.codeclimate.com/v1/badges/152e1dbef34e563ace98/maintainability)](https://codeclimate.com/github/mchoji/enade-py/maintainability)
+[![Requirements Status](https://requires.io/github/mchoji/enade-py/requirements.svg?branch=main)](https://requires.io/github/mchoji/enade-py/requirements/?branch=main)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![GitHub license](https://img.shields.io/github/license/mchoji/enade-py)](https://github.com/mchoji/enade-py/blob/master/LICENSE.txt)
+[![PyPI version fury.io](https://badge.fury.io/py/enade-py.svg)](https://pypi.python.org/pypi/enade-py/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/enade-py.svg)](https://pypi.python.org/pypi/enade-py/)
+[![PyPI status](https://img.shields.io/pypi/status/enade-py.svg)](https://pypi.python.org/pypi/enade-py/)
+[![DOI](https://zenodo.org/badge/303499390.svg)](https://zenodo.org/badge/latestdoi/303499390)
+
 # enade-py
 
  A library for facilitating data analysis over Enade microdata.
